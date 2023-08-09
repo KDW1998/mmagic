@@ -3,6 +3,8 @@
 from argparse import ArgumentParser
 from mmengine import DictAction
 from mmagic.apis import MMagicInferencer
+import torch.nn as nn
+from torch.nn import DataParallel
 
 
 def parse_args():
@@ -53,11 +55,6 @@ def parse_args():
         type=str,
         default=None,
         help='Path to the custom checkpoint file of the selected det model.')
-    parser.add_argument(
-        '--device',
-        type=str,
-        default='cuda',
-        help='Device used for inference.')
     parser.add_argument(
         '--extra-parameters',
         nargs='+',
